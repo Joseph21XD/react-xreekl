@@ -14,6 +14,18 @@ class MiComponenteClass extends Component{
     return <p>Hello World</p>;
   }
 }
+class Contador extends Component{
+  constructor(props){
+    super(props);
+    this.state={contador: 0};
+  }
+  aumentar = ()=>{ this.setState={contador: this.state.contador+1}};
+
+  render(){
+    return (<div><p>{this.state.contador}</p><button onClick={this.aumentar}>Aumentar</button></div>);
+  }
+}
+
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +47,7 @@ class App extends Component {
           <p> jaja saludos</p>
         </MiComponente>
         <MiComponenteClass/>
+        <Contador/>
       </div>
     );
   }
