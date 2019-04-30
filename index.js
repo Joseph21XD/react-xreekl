@@ -19,10 +19,47 @@ class Contador extends Component{
     super(props);
     this.state={contador: 0};
   }
-  aumentar = ()=>{ this.setState={contador: this.state.contador+1}};
+  aumentar = ()=>{ this.setState({contador: this.state.contador+1})};
 
   render(){
     return (<div><p>{this.state.contador}</p><button onClick={this.aumentar}>Aumentar</button></div>);
+  }
+}
+
+class Formulario extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      email: '',
+      password: ''
+    }
+  }
+
+  syncEmail = (email) => {
+    this.setState({email: email});
+
+  }
+
+  syncPwd = (passwd) => {
+    this.setState({password:passwd});
+  }
+
+  submitForm = () => {
+    console.log(this.state)
+  }
+
+  render(){
+    return (<form>
+    <input onChange={(ev)=>{this.syncEmail(ev.target.value)}}
+    type="email" placeholder="Correo Electrónico" value={this.state.email}></input>
+    <input onChange={(ev)=>{this.syncPwd(ev.target.value)}}
+    type="password" placeholder="Contraseña" value={this.state.password}></input>
+    <div>
+    <input 
+    onClick={this.submitForm}
+    type="submit" value="Enviar"></input>
+    </div>
+    </form>);
   }
 }
 
@@ -48,6 +85,7 @@ class App extends Component {
         </MiComponente>
         <MiComponenteClass/>
         <Contador/>
+        <Formulario/>
       </div>
     );
   }
